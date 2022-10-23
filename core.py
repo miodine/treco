@@ -1,8 +1,8 @@
 import pandas as pd
-import numpy as np
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
+import json
+
 
 HEADERS = {
     'User-Agent': 'TrecoBot/1.0'}
@@ -10,7 +10,7 @@ MAIN_URL = 'https://tradingeconomics.com/'
 
 
 def __format_dataframe(dataframe: pd.DataFrame, fmt: str):
-    fmt = fmt.to_lower()
+    fmt = fmt.lower()
 
     if fmt == 'json':
         return dataframe.to_json()
@@ -28,6 +28,29 @@ def __format_dataframe(dataframe: pd.DataFrame, fmt: str):
         return dataframe.to_latex()
     else:
         return dataframe
+
+
+def get_data_from_stream(begin=0, size=1, country='NULL', category='NULL') -> list:
+    headers = HEADERS
+    stream_url = 'https://tradingeconomics.com/ws/stream.ashx'
+
+    stream_get_args = '?start={begin}&size={size}'.format(
+        begin=begin, size=size)
+    if country != 'NULL':
+        stream_get_args += 'c={}'.format(country.lower().replace(' ', '+'))
+    if country != 'NULL':
+        stream_get_args += 'i={}'.format(category.lower().replace(' ', '+'))
+
+    url = stream_url+stream_get_args
+
+    resp = requests.get(url, headers=headers)
+
+    soup = BeautifulSoup(resp.content, 'html.parser',
+                         from_encoding='utf-8')
+
+    result_json = json.loads(soup.text.encode('utf-8', 'ignore'))
+
+    return result_json
 
 
 def get_data_from_tables(url: str) -> list:
@@ -50,10 +73,10 @@ def get_data_from_tables(url: str) -> list:
 def scrape_specific_data(server_path, format):
     url = MAIN_URL + server_path
     dataframe_list = get_data_from_tables(url)
-
     for dataframe in dataframe_list:
+        __format_dataframe(dataframe=dataframe, fmt=format)
 
-    return
+    return dataframe_list
 
 
 def get_data_from_lists(url: str, as_list=False):
