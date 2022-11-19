@@ -1,0 +1,7 @@
+site_name: treco
+site_url: https://github.com/miodine/treco
+nav:
+  - Home: index.md
+  - User Guide: user_guide.md
+  - API: api_reference.md
+theme: readthedocs
