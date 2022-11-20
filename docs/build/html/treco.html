@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>treco.core module &mdash; treco 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> treco
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">treco's documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">treco.core module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#treco.core.MAIN_URL"><code class="docutils literal notranslate"><span class="pre">MAIN_URL</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.core.get_data_from_lists"><code class="docutils literal notranslate"><span class="pre">get_data_from_lists()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.core.get_data_from_stream"><code class="docutils literal notranslate"><span class="pre">get_data_from_stream()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.core.get_data_from_tables"><code class="docutils literal notranslate"><span class="pre">get_data_from_tables()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.core.scrape_specific_tables"><code class="docutils literal notranslate"><span class="pre">scrape_specific_tables()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-treco.extras">treco.extras module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#treco.extras.heatmap"><code class="docutils literal notranslate"><span class="pre">heatmap()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.extras.news"><code class="docutils literal notranslate"><span class="pre">news()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-treco.forecasts">treco.forecasts module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#treco.forecasts.bonds_forecast"><code class="docutils literal notranslate"><span class="pre">bonds_forecast()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.forecasts.commodities_forecast"><code class="docutils literal notranslate"><span class="pre">commodities_forecast()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.forecasts.countries_by_forecast"><code class="docutils literal notranslate"><span class="pre">countries_by_forecast()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.forecasts.crypto_forecast"><code class="docutils literal notranslate"><span class="pre">crypto_forecast()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.forecasts.currencies_forecast"><code class="docutils literal notranslate"><span class="pre">currencies_forecast()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.forecasts.forecasts_by_country"><code class="docutils literal notranslate"><span class="pre">forecasts_by_country()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.forecasts.stock_indices_forecast"><code class="docutils literal notranslate"><span class="pre">stock_indices_forecast()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-treco.indicators">treco.indicators module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#treco.indicators.indicators_by_region"><code class="docutils literal notranslate"><span class="pre">indicators_by_region()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.indicators.regions_via_indicator"><code class="docutils literal notranslate"><span class="pre">regions_via_indicator()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-treco.markets">treco.markets module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#treco.markets.bonds"><code class="docutils literal notranslate"><span class="pre">bonds()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.markets.commodities"><code class="docutils literal notranslate"><span class="pre">commodities()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.markets.crypto"><code class="docutils literal notranslate"><span class="pre">crypto()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.markets.currencies"><code class="docutils literal notranslate"><span class="pre">currencies()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#treco.markets.stock_indices"><code class="docutils literal notranslate"><span class="pre">stock_indices()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">treco</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">treco.core module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/treco.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>Package modules</p>
+<hr class="docutils" />
+<section id="module-treco.core">
+<span id="treco-core-module"></span><h1>treco.core module<a class="headerlink" href="#module-treco.core" title="Permalink to this heading"></a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="treco.core.MAIN_URL">
+<span class="sig-prename descclassname"><span class="pre">treco.core.</span></span><span class="sig-name descname"><span class="pre">MAIN_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://tradingeconomics.com/'</span></em><a class="headerlink" href="#treco.core.MAIN_URL" title="Permalink to this definition"></a></dt>
+<dd><p># treco.core</p>
+<p>## MODULE DESCRIPTION</p>
+<p>The module contains all core utilities and functions 
+of the package related to data extraction from 
+tradingeconomics.</p>
+<p>The functions presented here are NOT meant to be called
+by the user.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.core.get_data_from_lists">
+<span class="sig-prename descclassname"><span class="pre">treco.core.</span></span><span class="sig-name descname"><span class="pre">get_data_from_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.core.get_data_from_lists" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Function allowing to obtain data from the lists presented on the website.</p>
+<p>The function finds all the list in given page, downloads its contents, 
+and returns them.</p>
+<p>## Parameters 
+url : address from which we’re scraping the data
+as_list : if True the returned value is list of dictionaries. Otherwise it’s a dictionary of dictionaries.</p>
+<p>## Returns 
+df_return : dictionary of dictionaires or list of dictionaries depending on - as_list parameter</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.core.get_data_from_stream">
+<span class="sig-prename descclassname"><span class="pre">treco.core.</span></span><span class="sig-name descname"><span class="pre">get_data_from_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">begin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NULL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NULL'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#treco.core.get_data_from_stream" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>The function requests and receives the data directly from news stream back-end endpoint.</p>
+<p>## Parameters</p>
+<p>begin : initial index of the news to be scraped. The news are ordered always from the newest (index == 0) to the oldest (index == len(database))
+size  : number of news to be scraped. (max == 100)</p>
+<p>## Returns</p>
+<p>result_json : list of dictionaries constructed on the basis of JSON response.</p>
+<p>## Notes</p>
+<p>It is a very simple function, manipulating the get request string.</p>
+<p>It’s capabilities are limited by built-in safety mechanisms such as this one -  the maximum amount of news to be scraped cannot 
+exceed 100 news in a single querry. To obtain more (consecutive) news, for example 300, one would have to:</p>
+<ol class="arabic simple">
+<li><p>Set index to 0</p></li>
+<li><p>Set the size to 100</p></li>
+</ol>
+<p>3. Scrape the data from 0 to 0+100 indices, then again…
+3. Set the beginning index to 100 (hundreth scraped news)
+4. Set the size to 100 (max)
+5. Scrape the data - from 100 to 100+100</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.core.get_data_from_tables">
+<span class="sig-prename descclassname"><span class="pre">treco.core.</span></span><span class="sig-name descname"><span class="pre">get_data_from_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#treco.core.get_data_from_tables" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Function allowing to obtain data from the tables presented on the website.</p>
+<p>The function finds all the tables in given page, downloads its contents, 
+and returns them in the form of list of dataframes (each dataframe represent different table).</p>
+<p>## Parameters 
+url : address from which we’re scraping the data</p>
+<p>## Returns 
+df_tables_list : list of dataframes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.core.scrape_specific_tables">
+<span class="sig-prename descclassname"><span class="pre">treco.core.</span></span><span class="sig-name descname"><span class="pre">scrape_specific_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.core.scrape_specific_tables" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Encapsulation of some of the utilities used by 
+the other modules, for scraping data from tables.</p>
+<p>## Params
+server_path : hard-coded part of the URL adres with presented tables
+fmt         : format of the resulting querry</p>
+<p>## Returns
+dataframe_list</p>
+</dd></dl>
+
+</section>
+<section id="module-treco.extras">
+<span id="treco-extras-module"></span><h1>treco.extras module<a class="headerlink" href="#module-treco.extras" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.extras.heatmap">
+<span class="sig-prename descclassname"><span class="pre">treco.extras.</span></span><span class="sig-name descname"><span class="pre">heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.extras.heatmap" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Get the heatmap, avalialbe under ‘/matrix’ subpage.</p>
+<p>## Parameters</p>
+<p>region : economic area for which the heatmap indicators are displayed.</p>
+<p>## Returns</p>
+<p>ret_val : heatmap, Pandas dfs format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.extras.news">
+<span class="sig-prename descclassname"><span class="pre">treco.extras.</span></span><span class="sig-name descname"><span class="pre">news</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NULL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NULL'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.extras.news" title="Permalink to this definition"></a></dt>
+<dd><p>## Description
+Get the last news published on the Trading Economics stream.
+It is a get_data_from_stream() wrapper as for now.</p>
+<p>## Parameters 
+amount : number of news to retrieve. 
+country : the name of the country (like ‘France’, or economic area, like ‘G20’ or ‘euro-area’), which the news concern.
+category : category of news</p>
+<p>## Returns</p>
+<p>(inferred) -&gt; result_json : list of dictionaries constructed on the basis of JSON response.</p>
+</dd></dl>
+
+</section>
+<section id="module-treco.forecasts">
+<span id="treco-forecasts-module"></span><h1>treco.forecasts module<a class="headerlink" href="#module-treco.forecasts" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.forecasts.bonds_forecast">
+<span class="sig-prename descclassname"><span class="pre">treco.forecasts.</span></span><span class="sig-name descname"><span class="pre">bonds_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.forecasts.bonds_forecast" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Provides forecast for the bond prices.</p>
+<p>## Parameters</p>
+<p>fmt : desired output dataframe format</p>
+<p>## Returns</p>
+<p>ret_val : dataframe with bonds data forecast</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.forecasts.commodities_forecast">
+<span class="sig-prename descclassname"><span class="pre">treco.forecasts.</span></span><span class="sig-name descname"><span class="pre">commodities_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.forecasts.commodities_forecast" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Provides forecast for the comodity prices.</p>
+<p>## Parameters</p>
+<p>fmt : desired output dataframe format</p>
+<p>## Returns</p>
+<p>ret_val : dataframe with major comodity prices forecast</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.forecasts.countries_by_forecast">
+<span class="sig-prename descclassname"><span class="pre">treco.forecasts.</span></span><span class="sig-name descname"><span class="pre">countries_by_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'World'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.forecasts.countries_by_forecast" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Returns a forecast of one selected indicator for multiple all the regions in given scope.</p>
+<p>## Parameters 
+indicator : name of the indicator to search for.
+scope : geographical cluster of countries.</p>
+<p>## Returns
+region_forecast_by_one_indicator : self explanatory.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.forecasts.crypto_forecast">
+<span class="sig-prename descclassname"><span class="pre">treco.forecasts.</span></span><span class="sig-name descname"><span class="pre">crypto_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.forecasts.crypto_forecast" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Provides crypto forecast.</p>
+<p>## Parameters</p>
+<p>fmt : desired output dataframe format</p>
+<p>## Returns</p>
+<p>ret_val : dataframe with cryptocurrency data forecast</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.forecasts.currencies_forecast">
+<span class="sig-prename descclassname"><span class="pre">treco.forecasts.</span></span><span class="sig-name descname"><span class="pre">currencies_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.forecasts.currencies_forecast" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Returns forecast of FX currency prices, as a list-of-tables. 
+Each entry in the list correspond to different geographic region.</p>
+<p>## Parameters</p>
+<p>fmt : desired output dataframe format</p>
+<p>## Returns</p>
+<p>ret_val : dataframe with currency pair ratios forecast</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.forecasts.forecasts_by_country">
+<span class="sig-prename descclassname"><span class="pre">treco.forecasts.</span></span><span class="sig-name descname"><span class="pre">forecasts_by_country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.forecasts.forecasts_by_country" title="Permalink to this definition"></a></dt>
+<dd><p>## Description 
+Forecast for all macro-economic indicators related to given country/region/area.</p>
+<p>## Parameters
+region : geographical region name.</p>
+<p>## Returns</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.forecasts.stock_indices_forecast">
+<span class="sig-prename descclassname"><span class="pre">treco.forecasts.</span></span><span class="sig-name descname"><span class="pre">stock_indices_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.forecasts.stock_indices_forecast" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Provides forecast for stock market indexes quotes for several countries including the latest price, yesterday 
+session close, plus weekly, monthly and yearly percentage changes.
+## Parameters</p>
+<p>fmt : desired output dataframe format</p>
+<p>## Returns</p>
+<p>ret_val : dataframe with stock indices forecast</p>
+</dd></dl>
+
+</section>
+<section id="module-treco.indicators">
+<span id="treco-indicators-module"></span><h1>treco.indicators module<a class="headerlink" href="#module-treco.indicators" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.indicators.indicators_by_region">
+<span class="sig-prename descclassname"><span class="pre">treco.indicators.</span></span><span class="sig-name descname"><span class="pre">indicators_by_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.indicators.indicators_by_region" title="Permalink to this definition"></a></dt>
+<dd><p>## Description 
+List all macro-economic indicators related to given country/region/area.</p>
+<p>## Parameters
+region : geographical region name.</p>
+<p>## Returns
+indicator_lists : list of dataframes with scraped indicators.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.indicators.regions_via_indicator">
+<span class="sig-prename descclassname"><span class="pre">treco.indicators.</span></span><span class="sig-name descname"><span class="pre">regions_via_indicator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'World'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.indicators.regions_via_indicator" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Returns a comparison of all regions/countries by one selected indicator.</p>
+<p>## Parameters
+indicator : name of the indicator to search for.
+scope : geographical cluster of countries.</p>
+<p>## Returns
+region_comparison_by_one_indicator : self explanatory.</p>
+</dd></dl>
+
+</section>
+<section id="module-treco.markets">
+<span id="treco-markets-module"></span><h1>treco.markets module<a class="headerlink" href="#module-treco.markets" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.markets.bonds">
+<span class="sig-prename descclassname"><span class="pre">treco.markets.</span></span><span class="sig-name descname"><span class="pre">bonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.markets.bonds" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Provides current prices for global bond market.</p>
+<p>## Parameters</p>
+<p>fmt : desired output dataframe format</p>
+<p>## Returns</p>
+<p>ret_val : dataframe with bonds data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.markets.commodities">
+<span class="sig-prename descclassname"><span class="pre">treco.markets.</span></span><span class="sig-name descname"><span class="pre">commodities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.markets.commodities" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Provides current commodity prices.</p>
+<p>## Parameters</p>
+<p>fmt : desired output dataframe format</p>
+<p>## Returns</p>
+<p>ret_val : dataframe with major comodity prices</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.markets.crypto">
+<span class="sig-prename descclassname"><span class="pre">treco.markets.</span></span><span class="sig-name descname"><span class="pre">crypto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.markets.crypto" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Provides current prices for major cryptocurrencies.</p>
+<p>## Parameters</p>
+<p>fmt : desired output dataframe format</p>
+<p>## Returns</p>
+<p>ret_val : dataframe with cryptocurrency data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.markets.currencies">
+<span class="sig-prename descclassname"><span class="pre">treco.markets.</span></span><span class="sig-name descname"><span class="pre">currencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.markets.currencies" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>Returns FX currency prices, as a list-of-tables. 
+Each entry in the list correspond to different geographic region.</p>
+<p>## Parameters</p>
+<p>fmt : desired output dataframe format</p>
+<p>## Returns</p>
+<p>ret_val : dataframe with currency pair ratios</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="treco.markets.stock_indices">
+<span class="sig-prename descclassname"><span class="pre">treco.markets.</span></span><span class="sig-name descname"><span class="pre">stock_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treco.markets.stock_indices" title="Permalink to this definition"></a></dt>
+<dd><p>## Description</p>
+<p>provides stock market indexes quotes for several countries including the latest price, yesterday 
+session close, plus weekly, monthly and yearly percentage changes.
+## Parameters</p>
+<p>fmt : desired output dataframe format</p>
+<p>## Returns</p>
+<p>ret_val : dataframe with stock indices</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, miodine.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
