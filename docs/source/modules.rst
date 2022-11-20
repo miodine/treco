@@ -1,3 +1,6 @@
+Package modules
+=============
+
 .. toctree::
    :maxdepth: 4
 
