@@ -1,6 +1,5 @@
 from treco.core import scrape_specific_tables
 
-"""
 # treco.markets 
 
 ## Module description 
@@ -23,11 +22,11 @@ that is:
 8. Today's date.
 
 
-"""
+
 
 
 def currencies(fmt):
-    ''' 
+     
         ## Description
 
         Returns FX currency prices, as a list-of-tables. 
@@ -41,14 +40,14 @@ def currencies(fmt):
 
         ret_val : dataframe with currency pair ratios
 
-        '''
+        
 
     ret_val = scrape_specific_tables("/currencies", fmt)
     return ret_val
 
 
 def stock_indices(fmt):
-    '''
+    
     ## Description 
 
     provides stock market indexes quotes for several countries including the latest price, yesterday 
@@ -61,14 +60,14 @@ def stock_indices(fmt):
 
     ret_val : dataframe with stock indices
 
-    '''
+    
 
     ret_val = scrape_specific_tables("/stocks", fmt)
     return ret_val
 
 
 def commodities(fmt):
-    '''
+    
     ## Description 
 
     Provides current commodity prices.
@@ -81,14 +80,14 @@ def commodities(fmt):
 
     ret_val : dataframe with major comodity prices
 
-    '''
+    
 
     ret_val = scrape_specific_tables("/commodities", fmt)
     return ret_val
 
 
 def bonds(fmt):
-    '''
+    
     ## Description 
 
     Provides current prices for global bond market.
@@ -101,14 +100,14 @@ def bonds(fmt):
 
     ret_val : dataframe with bonds data
 
-    '''
+    
 
     ret_val = scrape_specific_tables("/bonds", fmt)
     return ret_val
 
 
 def crypto(fmt):
-    '''
+    
     ## Description
 
     Provides current prices for major cryptocurrencies.
@@ -121,7 +120,7 @@ def crypto(fmt):
 
     ret_val : dataframe with cryptocurrency data 
 
-    '''
+    
 
     ret_val = scrape_specific_tables("/crypto", fmt)
     return ret_val
