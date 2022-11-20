@@ -188,7 +188,7 @@ def get_data_from_lists(url: str, as_list=False):
 
     ## Parameters 
     url : address from which we're scraping the data
-    as_list : if True -> the returned value is list of dictionaries. Otherwise it's a dictionary of dictionaries.
+    as_list : if True the returned value is list of dictionaries. Otherwise it's a dictionary of dictionaries.
 
     ## Returns 
     df_return : dictionary of dictionaires or list of dictionaries depending on - as_list parameter
